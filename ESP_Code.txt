@@ -1,0 +1,108 @@
+#include <ESP8266WiFi.h>
+extern "C" 
+{
+#include "user_interface.h"
+}
+
+const char* ssid = "";
+const char* password = "";
+
+const char* host = "api.thingspeak.com";
+
+void setup() 
+{
+Serial.begin(9600);
+Serial.println();
+Serial.println();
+Serial.print("Connecting to ");
+Serial.println(ssid);
+
+WiFi.begin(ssid, password);
+
+while (WiFi.status() != WL_CONNECTED) 
+{
+delay(500);
+Serial.print(".");
+}
+
+Serial.println("");
+Serial.println("WiFi connected"); 
+Serial.println("IP address: ");
+Serial.println(WiFi.localIP());
+}
+
+void loop() 
+  {
+
+    while(Serial.available()>0)
+    {
+
+    Serial.print("connecting to ");
+    Serial.println(host);
+
+    // Use WiFiClient class to create TCP connections
+    WiFiClient client;
+    const int httpPort = 80;
+    
+
+
+String myString = Serial.readString();
+
+String sen1 = getValue(myString, ':', 0);
+String sen2 = getValue(myString, ':', 1);
+String sen3 = getValue(myString, ':', 2);
+String sen4 = getValue(myString, ':', 3);
+
+String url ="/update?api_key=WCJZ0K2HTJ4UF43R"; ///health/public/api/read
+ 
+ 
+url += "&field1="; //reading1
+url += sen1;
+
+url += "&field2="; //reading2
+url += sen2;
+
+url += "&field3="; //reading3
+url += sen3;
+
+url += "&field4="; //reading4
+url += sen4;
+
+
+
+Serial.print("Requesting URL: ");
+Serial.println(url);
+
+// This will send the request to the server
+client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+"Host: " + host + "\r\n" + 
+"Connection: close\r\n\r\n");
+delay(10);
+
+// Read all the lines of the reply from server and print them to Serial
+while(client.available())
+{
+  String line = client.readStringUntil('\r');
+  Serial.print(line);
+  }
+    Serial.println();
+    Serial.println("closing connection");
+    delay(1000);
+  }
+}
+
+String getValue(String data, char separator, int index)
+{
+    int found = 0;
+    int strIndex[] = { 0, -1 };
+    int maxIndex = data.length() - 1;
+
+    for (int i = 0; i <= maxIndex && found <= index; i++) {
+        if (data.charAt(i) == separator || i == maxIndex) {
+            found++;
+            strIndex[0] = strIndex[1] + 1;
+            strIndex[1] = (i == maxIndex) ? i+1 : i;
+        }
+    }
+    return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
