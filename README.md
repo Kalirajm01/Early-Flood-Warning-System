@@ -5,7 +5,7 @@
 => The main objective of my project is to create high professional Flood Warning System and to track the Flood Level and Water Flow Rate, also to monitor the Humidity and Temperature. 
 
 BLOCK DIAGRAM:
-![image](https://user-images.githubusercontent.com/92640470/201083218-6b7efdb5-5561-4327-b958-6a7a10172b3d.png)
+![image](https://github.com/Kalirajm01/Flood-Warning-System/assets/92640470/a61181ea-db67-4a71-a185-777be01c20a3)
 
 METHODOLOGY:
 ![image](https://user-images.githubusercontent.com/92640470/201082813-fe459e42-1f49-4f62-83e8-e3d2b5ffc5d0.png)
