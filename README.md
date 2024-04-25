@@ -1,10 +1,12 @@
 # Flood-Warning-System
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 => This is my Final Year Diploma Project titled as "Early Flood Warning System for Disaster Management".
 
-=> The main objective of my project is to create high professional Flood Warning System and to track the Flood Level and Water Flow Rate, also to monitor the Humidity and Temperature. 
+=> The main objective of my project is to create high professional Flood Warning System and to track the Flood Level and Water Flow Rate, also to monitor the Humidity and Temperature.
 
-BLOCK DIAGRAM:
+**BLOCK DIAGRAM:**
 ![Picture1](https://github.com/Kalirajm01/Early-Flood-Warning-System/assets/92640470/8ebfd755-86c4-4a4f-ab55-454fab585c89)
 
 METHODOLOGY:
@@ -18,6 +20,4 @@ DATA FLOW DIAGRAM:
 
 ![image](https://user-images.githubusercontent.com/92640470/201084551-07301c82-f98e-4fe9-af08-fa96b4541c40.png)
 
-
 ![image](https://user-images.githubusercontent.com/92640470/201084712-a1f6be89-37c3-4926-85f7-00ae4ddaf601.png)
-
